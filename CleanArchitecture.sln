@@ -10,6 +10,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Api", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.Specs", "tests\CleanArchitecture.Specs\CleanArchitecture.Specs.csproj", "{FBA4BF80-098D-478B-9B5D-35208A0EF5DA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{48C4163B-8FEF-47C5-82C7-566CA9DB34AE}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		httpbin.http = httpbin.http
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

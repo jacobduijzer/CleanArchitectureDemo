@@ -4,10 +4,10 @@ namespace CleanArchitecture.Specs;
 
 public class WebApplicationContext(WebApplicationFactory<Program> webApp)
 {
-    public HttpClient Client { get; set; } = null!;
+    public ICleanArchitectureApi Api { get; set; }
     
     public void Start()
     {
-        Client = webApp.CreateClient();
+        Api = Refit.RestService.For<ICleanArchitectureApi>(webApp.CreateClient());
     }
 }

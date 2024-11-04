@@ -1,0 +1,7 @@
+POST https://httpbin.org/post HTTP/1.1
+Content-Type: application/json
+
+{
+  "Guid": "a7d2b1b9-8f8d-4f2b-9d3e-5d6d7d8d",
+  "Name": "Apple"
+}

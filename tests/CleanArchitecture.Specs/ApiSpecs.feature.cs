@@ -85,14 +85,14 @@ namespace CleanArchitecture.Specs
             await this.TestTearDownAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Adding a duplicate floor to a building")]
+        [Xunit.SkippableFactAttribute(DisplayName="Sending a request to create a new client in the system of PartyOne")]
         [Xunit.TraitAttribute("FeatureTitle", "Testing my api\'s")]
-        [Xunit.TraitAttribute("Description", "Adding a duplicate floor to a building")]
-        public async System.Threading.Tasks.Task AddingADuplicateFloorToABuilding()
+        [Xunit.TraitAttribute("Description", "Sending a request to create a new client in the system of PartyOne")]
+        public async System.Threading.Tasks.Task SendingARequestToCreateANewClientInTheSystemOfPartyOne()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Adding a duplicate floor to a building", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Sending a request to create a new client in the system of PartyOne", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 3
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -104,7 +104,56 @@ namespace CleanArchitecture.Specs
             {
                 await this.ScenarioStartAsync();
 #line 4
-        await testRunner.GivenAsync("i do something", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+        await testRunner.GivenAsync("I want to create a new client named \'Hank\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 5
+        await testRunner.AndAsync("I want to create it in the system of \'PartyOne\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 6
+        await testRunner.WhenAsync("I send a message to the api to create this new client", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 7
+        await testRunner.ThenAsync("I should receive a valid, new id", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 8
+        await testRunner.AndAsync("a success message \"Client created successfully\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Sending a request to create a new client in the system of PartyTwo")]
+        [Xunit.TraitAttribute("FeatureTitle", "Testing my api\'s")]
+        [Xunit.TraitAttribute("Description", "Sending a request to create a new client in the system of PartyTwo")]
+        public async System.Threading.Tasks.Task SendingARequestToCreateANewClientInTheSystemOfPartyTwo()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Sending a request to create a new client in the system of PartyTwo", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 11
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 12
+        await testRunner.GivenAsync("I want to create a new client named \'Hank\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 13
+        await testRunner.AndAsync("I want to create it in the system of \'PartyTwo\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 14
+        await testRunner.WhenAsync("I send a message to the api to create this new client", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 15
+        await testRunner.ThenAsync("I should receive a valid, new id", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 16
+        await testRunner.AndAsync("a success message \"Client created successfully\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

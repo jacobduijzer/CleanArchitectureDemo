@@ -1,30 +1,35 @@
+using CleanArchitecture.Api;
 using CleanArchitecture.Application;
+using CleanArchitecture.Domain;
 using CleanArchitecture.Infrastructure;
-using CleanArchitecture.Infrastructure.Practiplan;
 using Refit;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddScoped<MessageHandlerFactory>();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<MessageHandler>();
+builder.Services.AddScoped<IFlowFactory, FlowFactory>();
+builder.Services.AddPartyImplementations();
+
 builder.Services
-    .AddRefitClient<IApi>()
+    .AddRefitClient<CleanArchitecture.Infrastructure.PartyOne.IApi>()
     .ConfigureHttpClient(c =>
-        c.BaseAddress = new Uri("https://reqbin.com"));
+        c.BaseAddress = new Uri("https://httpbin.org"));
 
 var app = builder.Build();
-
-// TODO: add data / message
-app.MapPost("/", async (
-    string message,
-    MessageHandlerFactory messageHandlerFactory) =>
-{
-    IHandler handler = messageHandlerFactory.Create(message);
-    await handler.Handler();
-
-    return Results.Ok();
-}).WithName("PostMessage");
+app.UseSwagger();
+app.UseSwaggerUI();
+app
+    .MapPost("/", async (
+        IncomingMessage message,
+        MessageHandler messageHandler) =>
+    {
+        var outgoing = await messageHandler.Handle(message);
+        return Results.Ok(outgoing);
+    })
+    .WithName("PostMessage")
+    .WithOpenApi();
 
 app.Run();
 
-public partial class Program
-{
-}
+public partial class Program { }

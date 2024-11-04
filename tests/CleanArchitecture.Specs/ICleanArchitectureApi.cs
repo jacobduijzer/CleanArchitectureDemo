@@ -1,9 +1,10 @@
-﻿using Refit;
+﻿using CleanArchitecture.Domain;
+using Refit;
 
 namespace CleanArchitecture.Specs;
 
 public interface ICleanArchitectureApi
 {
    [Post("/")]
-   Task AddMessage(string message);
+   Task<OutgoingMessage> AddMessage([Body(BodySerializationMethod.Serialized)]IncomingMessage incomingMessage);
 }
